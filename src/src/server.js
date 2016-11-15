@@ -35,14 +35,24 @@ var equipamentos = {
 }
 
 var usuarios = {
-	'Thiago': 'Funcionario',
-	'Guilherme': 'Administrador',
-    "fabricante": "A",
-    "local": "H-310"
+	"Thiago": "Funcionario",
+	"Guilherme": "Administrador",
+	"Erik": "Administrador",
+	"Fábio": "Funcionario"
 }
 
 app.get("/equips", function(req,res){
 	res.send(JSON.stringify(equipamentos));
+});
+
+app.get("/users", function(req,res){
+/*	func = [];
+	for (var key in usuarios) {
+		if (usuarios[key] === "Funcionario"){
+			func.push(key);
+		};
+	}*/
+	res.send(JSON.stringify(usuarios));
 });
 
 app.post("/requisitar/:value", function(req, res){

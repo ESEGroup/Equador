@@ -5,7 +5,7 @@ var xhr = require("xhr");
 // Create your front-end app here
 var main = React.createClass({
   getInitialState: function(){
-    return {pagina: 'home', info: {}};
+    return {pagina: 'home', info: {}, users: {}};
     //count: 0};
   },
   setHome: function(){
@@ -14,6 +14,7 @@ var main = React.createClass({
   setRequisicao: function(){
     this.setState({pagina: 'requisicao'});
     this.getEquipamentos();
+    this.getUsers();
   },
   setGestao: function(){
     this.setState({pagina: 'gestao'});
@@ -27,6 +28,11 @@ var main = React.createClass({
     xhr.get("/equips", (err, res) => {
       this.setState({info: JSON.parse(res.body)});
     });
+  },
+  getUsers: function(){
+    xhr.get("/users", (err,res) => {
+      this.setState({users: JSON.parse(res.body)});
+    })
   },
   requisitarManutencaoPost: function(){
     console.log(this.state.value);
@@ -55,13 +61,26 @@ var main = React.createClass({
       var organize = function(obj){
           var lines = [];
           for(var key in obj){
-              lines.push(<option value={key}>{obj[key].nome}</option>);
+              lines.push(<option key={key} value={key}>{obj[key].nome}</option>);
           };
           return <div><select value={this.state.value} onChange={this.handleChange}>
               <option selected disabled>Choose here</option>
               {lines}
           </select></div>;
       }.bind(this);
+      var orgUsers = function(obj){
+          var lines = [];
+          for(var key in obj){
+            if (obj[key] === "Funcionario"){
+              lines.push(<option key={key} value={key}>{key}</option>);
+            }
+          };
+          return <div><select value={this.state.value} onChange={this.handleChange}>
+              <option selected disabled>Choose here</option>
+              {lines}
+          </select></div>;
+      }.bind(this);
+
       return <div>
           <div><button onClick={this.setHome}> Home </button>
               <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
@@ -70,6 +89,8 @@ var main = React.createClass({
           <div> Requisitar Manutenção </div>
           <div> Equipamentos </div>
               <div> {organize(this.state.info)}</div>
+          <div> Funcionários </div>
+              <div> {orgUsers(this.state.users)}</div>
               <div><button onClick={this.requisitarManutencaoPost}> Requisitar </button></div>
           </div>;
   },
@@ -98,6 +119,7 @@ var main = React.createClass({
     <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
     <button onClick={this.setGestao}> Gerir Manutenção </button>
     <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+    <div>Pesquisa: </div>
     <div className="subtitle"> Equipamentos </div>
     <div> {organize(this.state.info)} </div>
     </div>;
