@@ -11,9 +11,21 @@ app.listen(3000, function(){
 var value = 0;
 
 var equipamentos = {
-	1: {nome: 'ar condicionado', status: 0, status_t: 'Disponível'},
-	2: {nome: 'lâmpada', status: 1, status_t: 'Em Manutenção'},
-	3: {nome: 'cadeira', status: 2, status_t: 'Manutenção Pendente'}
+  "1": {
+    "nome": "ar condicionado",
+    "status": 0,
+    "status_t": "Disponível"
+  },
+  "2": {
+    "nome": "lâmpada",
+    "status": 1,
+    "status_t": "Em Manutenção"
+  },
+  "3": {
+    "nome": "cadeira",
+    "status": 2,
+    "status_t": "Manutenção Pendente"
+  }
 }
 
 var usuarios = {
@@ -22,7 +34,7 @@ var usuarios = {
 }
 
 app.get("/equips", function(req,res){
-	res.send(equipamentos);
+	res.send(JSON.stringify(equipamentos));
 });
 
 app.post("/save/:value", function(req, res){

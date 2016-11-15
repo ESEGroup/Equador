@@ -24,8 +24,12 @@ var main = React.createClass({
 
   getEquipamentos: function(){
     xhr.get("/equips", (err, res) => {
-      this.setState({info: res.body});
+      this.setState({info: JSON.parse(res.body)});
     });
+  },
+  componentDidMount: function(){
+    state = this.state;
+    set = this.setState.bind(this);
   },
 
   paginaHome: function(){
@@ -56,13 +60,20 @@ var main = React.createClass({
     </div>;
   },
   paginaEquipamentos: function(){
+    var organize = function(obj){
+      var lines = [];
+      for(var key in obj){
+        lines.push(<li key={key}>{obj[key].nome}</li>);
+      };
+      return <div><ol>{lines}</ol></div>;
+    };
   	return <div>
     <div><button onClick={this.setHome}> Home </button> 
     <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
     <button onClick={this.setGestao}> Gerir Manutenção </button>
     <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
     <div> Equipamentos </div>
-    <div> {this.state.info}
+    <div> {organize(this.state.info)}
     </div>
     </div>;
   },
