@@ -5,7 +5,7 @@ var xhr = require("xhr");
 // Create your front-end app here
 var main = React.createClass({
   getInitialState: function(){
-    return {pagina: 'home'};
+    return {pagina: 'home', info: {}};
     //count: 0};
   },
   setHome: function(){
@@ -19,40 +19,52 @@ var main = React.createClass({
   },
   setEquipamentos: function(){
     this.setState({pagina: 'equipamentos'});
+    this.getEquipamentos();
   },
+
+  getEquipamentos: function(){
+    xhr.get("/equips", (err, res) => {
+      this.setState({info: res.body});
+    });
+  },
+
   paginaHome: function(){
   	return <div>
-  	<div>Bem vindo ao sistema Equador</div>
   	<div><button onClick={this.setHome}> Home </button> 
   	<button onClick={this.setRequisicao}> Requisitar Manutenção </button>
   	<button onClick={this.setGestao}> Gerir Manutenção </button>
-  	<button onClick={this.setEquipamentos}> Listar Equipamentos </button>
-  	</div>
+  	<button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+    <div>Bem vindo ao sistema Equador</div>
   	</div>;
   },
   paginaRequisicao: function(){
-  	return <div> <div> Requisição de Manutenção </div>    
+  	return <div>
     <div><button onClick={this.setHome}> Home </button> 
     <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
     <button onClick={this.setGestao}> Gerir Manutenção </button>
-    <button onClick={this.setEquipamentos}> Listar Equipamentos </button>
-    </div></div>;
+    <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+    <div> Requisição de Manutenção </div>
+    </div>;
   },
   paginaGestao: function(){
-  	return <div><div> Gestão de Manutenção </div>
+  	return <div>
     <div><button onClick={this.setHome}> Home </button> 
     <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
     <button onClick={this.setGestao}> Gerir Manutenção </button>
-    <button onClick={this.setEquipamentos}> Listar Equipamentos </button>
-    </div></div>;
+    <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+    <div> Gestão de Manutenção </div>
+    </div>;
   },
   paginaEquipamentos: function(){
-  	return <div><div> Equipamentos </div>
+  	return <div>
     <div><button onClick={this.setHome}> Home </button> 
     <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
     <button onClick={this.setGestao}> Gerir Manutenção </button>
-    <button onClick={this.setEquipamentos}> Listar Equipamentos </button>
-    </div></div>;
+    <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+    <div> Equipamentos </div>
+    <div> {this.state.info}
+    </div>
+    </div>;
   },
 
 
