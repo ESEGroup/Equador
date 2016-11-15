@@ -12,25 +12,33 @@ var value = 0;
 
 var equipamentos = {
   "1": {
-    "nome": "ar condicionado",
+    "nome": "Ar Condicionado",
     "status": 0,
-    "status_t": "Disponível"
+    "status_t": "Disponível",
+    "fabricante": "A",
+    "local": "H-310"
   },
   "2": {
-    "nome": "lâmpada",
+    "nome": "Lâmpada",
     "status": 1,
-    "status_t": "Em Manutenção"
+    "status_t": "Em Manutenção",
+    "fabricante": "B",
+    "local": "H-204"
   },
   "3": {
-    "nome": "cadeira",
+    "nome": "Cadeira",
     "status": 2,
-    "status_t": "Manutenção Pendente"
+    "status_t": "Manutenção Pendente",
+    "fabricante": "C",
+    "local": "A-624"
   }
 }
 
 var usuarios = {
 	'Thiago': 'Funcionario',
-	'Guilherme': 'Administrador'
+	'Guilherme': 'Administrador',
+    "fabricante": "A",
+    "local": "H-310"
 }
 
 app.get("/equips", function(req,res){
