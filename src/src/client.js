@@ -5,7 +5,7 @@ var xhr = require("xhr");
 // Create your front-end app here
 var main = React.createClass({
   getInitialState: function(){
-    return {pagina: 'home', info: {}};
+    return {pagina: 'home', info: {}, value: 0};
     //count: 0};
   },
   setHome: function(){
@@ -17,6 +17,7 @@ var main = React.createClass({
   },
   setGestao: function(){
     this.setState({pagina: 'gestao'});
+    this.getEquipamentos();
   },
   setEquipamentos: function(){
     this.setState({pagina: 'equipamentos'});
@@ -34,6 +35,18 @@ var main = React.createClass({
         alert(res.body);
     });
   },
+    realizarManutencaoPost: function(){
+        console.log(this.state.value);
+        xhr.post("/realizarmanutencao/"+String(this.state.value), function(err, res){
+            alert(res.body);
+        });
+    },
+    liberarEquipamentoPost: function(){
+        console.log(this.state.value);
+        xhr.post("/liberar/"+String(this.state.value), function(err, res){
+            alert(res.body);
+        });
+    },
   componentDidMount: function(){
     state = this.state;
     set = this.setState.bind(this);
@@ -74,13 +87,36 @@ var main = React.createClass({
           </div>;
   },
   paginaGestao: function(){
-  	return <div>
-    <div><button onClick={this.setHome}> Home </button> 
-    <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
-    <button onClick={this.setGestao}> Gerir Manutenção </button>
-    <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
-    <div> Gestão de Manutenção </div>
-    </div>;
+      var organize = function(obj){
+
+          if (!this.state.value){
+              for(var key in obj){
+                  this.state.value = key;
+                  break;
+              }
+          }
+
+
+          var lines = [];
+          for(var key in obj){
+              lines.push(<option value={key}>{obj[key].nome}</option>);
+          };
+          return <div><select value={this.state.value} onChange={this.handleChange}>
+              <option selected disabled>Choose here</option>
+              {lines}
+              </select></div>;
+      }.bind(this);
+      return <div>
+          <div><button onClick={this.setHome}> Home </button>
+              <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
+              <button onClick={this.setGestao}> Gerir Manutenção </button>
+              <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+          <div> Gestão de Manutenção </div>
+          <div> Equipamentos </div>
+          <div> {organize(this.state.info)}</div>
+          <div><button disabled={this.state.info[String(this.state.value)].status != 2} onClick={this.realizarManutencaoPost}> Realizar Manutenção </button></div>
+          <div><button disabled={this.state.info[String(this.state.value)].status != 1} onClick={this.liberarEquipamentoPost}> Liberar Equipamento </button></div>
+      </div>;
   },
   paginaEquipamentos: function(){
     var organize = function(obj){
