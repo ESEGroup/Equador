@@ -13,6 +13,7 @@ var main = React.createClass({
   },
   setRequisicao: function(){
     this.setState({pagina: 'requisicao'});
+    this.getEquipamentos();
   },
   setGestao: function(){
     this.setState({pagina: 'gestao'});
@@ -27,9 +28,18 @@ var main = React.createClass({
       this.setState({info: JSON.parse(res.body)});
     });
   },
+  requisitarManutencaoPost: function(){
+    console.log(this.state.value);
+    xhr.post("/requisitar/"+String(this.state.value), function(err, res){
+        alert(res.body);
+    });
+  },
   componentDidMount: function(){
     state = this.state;
     set = this.setState.bind(this);
+  },
+  handleChange(event) {
+    this.setState({value: event.target.value});
   },
 
   paginaHome: function(){
@@ -42,13 +52,26 @@ var main = React.createClass({
   	</div>;
   },
   paginaRequisicao: function(){
-  	return <div>
-    <div><button onClick={this.setHome}> Home </button> 
-    <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
-    <button onClick={this.setGestao}> Gerir Manutenção </button>
-    <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
-    <div> Requisição de Manutenção </div>
-    </div>;
+      var organize = function(obj){
+          var lines = [];
+          for(var key in obj){
+              lines.push(<option value={key}>{obj[key].nome}</option>);
+          };
+          return <div><select value={this.state.value} onChange={this.handleChange}>
+              <option selected disabled>Choose here</option>
+              {lines}
+          </select></div>;
+      }.bind(this);
+      return <div>
+          <div><button onClick={this.setHome}> Home </button>
+              <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
+              <button onClick={this.setGestao}> Gerir Manutenção </button>
+              <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
+          <div> Requisitar Manutenção </div>
+          <div> Equipamentos </div>
+              <div> {organize(this.state.info)}</div>
+              <div><button onClick={this.requisitarManutencaoPost}> Requisitar </button></div>
+          </div>;
   },
   paginaGestao: function(){
   	return <div>
