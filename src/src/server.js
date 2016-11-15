@@ -45,9 +45,16 @@ app.get("/equips", function(req,res){
 	res.send(JSON.stringify(equipamentos));
 });
 
-app.post("/save/:value", function(req, res){
-  value = Number(req.params.value);
-  res.send("Saved!");
+app.post("/requisitar/:value", function(req, res){
+  value = req.params.value;
+  if (equipamentos[value] && equipamentos[value].status == 0){
+      equipamentos[value].status = 2;
+      res.send("Manutenção requisitada com sucesso");
+  }
+  else{
+      res.send("Erro ao requisitar manutenção");
+  }
+
 });
 
 app.get("/load", function(req, res){
