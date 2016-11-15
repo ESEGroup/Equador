@@ -3,3 +3,17 @@
   margin: 0px;
   padding: 0px;
 }*/
+
+.subtitle {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.item {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 16px;
+	display: inline-block;
+	/*float: left;*/
+
+}

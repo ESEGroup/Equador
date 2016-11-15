@@ -63,7 +63,10 @@ var main = React.createClass({
     var organize = function(obj){
       var lines = [];
       for(var key in obj){
-        lines.push(<li key={key}>{obj[key].nome}</li>);
+        lines.push(<li key={key}><div className="item">Nome:</div>{obj[key].nome}
+        <p><div className="item">Fabricante:</div>{obj[key].fabricante}</p>
+        <p><div className="item">Local:</div>{obj[key].local}</p>
+        <p><div className="item">Status:</div>{obj[key].status_t}</p></li>);
       };
       return <div><ol>{lines}</ol></div>;
     };
@@ -72,9 +75,8 @@ var main = React.createClass({
     <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
     <button onClick={this.setGestao}> Gerir Manutenção </button>
     <button onClick={this.setEquipamentos}> Listar Equipamentos </button></div>
-    <div> Equipamentos </div>
-    <div> {organize(this.state.info)}
-    </div>
+    <div className="subtitle"> Equipamentos </div>
+    <div> {organize(this.state.info)} </div>
     </div>;
   },
 
