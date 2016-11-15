@@ -67,6 +67,30 @@ app.post("/requisitar/:value", function(req, res){
 
 });
 
+app.post("/realizarmanutencao/:value", function(req, res){
+    value = req.params.value;
+    if (equipamentos[value] && equipamentos[value].status == 2){
+        equipamentos[value].status = 1;
+        res.send("Manutenção está agora em andamento");
+    }
+    else{
+        res.send("Erro ao colocar manutenção em andamento");
+    }
+
+});
+
+app.post("/liberar/:value", function(req, res){
+    value = req.params.value;
+    if (equipamentos[value] && equipamentos[value].status == 1){
+        equipamentos[value].status = 0;
+        res.send("Equipamento liberado de manutenção");
+    }
+    else{
+        res.send("Erro ao liberar equipamento");
+    }
+
+});
+
 app.get("/load", function(req, res){
   res.send(String(value));
 });
