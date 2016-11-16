@@ -59,6 +59,7 @@ app.post("/requisitar/:value", function(req, res){
   value = req.params.value;
   if (equipamentos[value] && equipamentos[value].status == 0){
       equipamentos[value].status = 2;
+      equipamentos[value].status_t = "Manutenção Pendente";
       res.send("Manutenção requisitada com sucesso");
   }
   else{
@@ -71,6 +72,7 @@ app.post("/realizarmanutencao/:value", function(req, res){
     value = req.params.value;
     if (equipamentos[value] && equipamentos[value].status == 2){
         equipamentos[value].status = 1;
+        equipamentos[value].status_t = "Em manutenção";
         res.send("Manutenção está agora em andamento");
     }
     else{
@@ -83,6 +85,7 @@ app.post("/liberar/:value", function(req, res){
     value = req.params.value;
     if (equipamentos[value] && equipamentos[value].status == 1){
         equipamentos[value].status = 0;
+        equipamentos[value].status_t = "Disponível";
         res.send("Equipamento liberado de manutenção");
     }
     else{

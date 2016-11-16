@@ -58,6 +58,7 @@ var main = React.createClass({
     set = this.setState.bind(this);
   },
   handleChange: function(event){
+    this.getEquipamentos();
     this.setState({value: event.target.value})
   },
   handleChange2: function(event){
@@ -134,10 +135,11 @@ var main = React.createClass({
               lines.push(<option key={key} value={key}>{obj[key].nome}</option>);
           };
           return <div><select value={this.state.value} onChange={this.handleChange}>
-              <option selected disabled>Choose here</option>
+              <option defaultValue disabled>Choose here</option>
               {lines}
               </select></div>;
       }.bind(this);
+      this.getEquipamentos();
       return <div>
           <div><button onClick={this.setHome}> Home </button>
               <button onClick={this.setRequisicao}> Requisitar Manutenção </button>
