@@ -5,19 +5,19 @@ var xhr = require("xhr");
 // Create your front-end app here
 var main = React.createClass({
   getInitialState: function(){
-    return {pagina: 'home', info: {}, value: 0, users: {}};
+    return {pagina: 'home', info: {}, value: 0, value2: 0, users: {}};//, "func": 0, "equip": 0};
     //count: 0};
   },
   setHome: function(){
     this.setState({pagina: 'home'});
   },
   setRequisicao: function(){
-    this.setState({pagina: 'requisicao'});
+    this.setState({pagina: 'requisicao', value: 0, value2: 0});
     this.getEquipamentos();
     this.getUsers();
   },
   setGestao: function(){
-    this.setState({pagina: 'gestao'});
+    this.setState({pagina: 'gestao', value: 0});
     this.getEquipamentos();
   },
   setEquipamentos: function(){
@@ -57,9 +57,18 @@ var main = React.createClass({
     state = this.state;
     set = this.setState.bind(this);
   },
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange: function(event){
+    this.setState({value: event.target.value})
   },
+  handleChange2: function(event){
+    this.setState({value2: event.target.value})
+  },
+  /*
+  handleChange: function(field){
+    return function(event) {
+        this.setState({field: event.target.value});
+      };
+  },*/
 
   paginaHome: function(){
   	return <div>
@@ -76,19 +85,21 @@ var main = React.createClass({
           for(var key in obj){
               lines.push(<option key={key} value={key}>{obj[key].nome}</option>);
           };
-          return <div><select value={this.state.value} onChange={this.handleChange}>
+          return <div><select value={this.state.value} onChange = {this.handleChange}>
               <option defaultValue disabled>Choose here</option>
               {lines}
           </select></div>;
       }.bind(this);
       var orgUsers = function(obj){
           var lines = [];
+          count = 1;
           for(var key in obj){
             if (obj[key] === "Funcionario"){
-              lines.push(<option key={key} value={key}>{key}</option>);
+              lines.push(<option key={count} value={count}>{key}</option>);
+              count += 1;
             }
           };
-          return <div><select value={this.state.value} onChange={this.handleChange}>
+          return <div><select value={this.state.value2} onChange = {this.handleChange2}>
               <option defaultValue disabled>Choose here</option>
               {lines}
           </select></div>;
@@ -120,7 +131,7 @@ var main = React.createClass({
 
           var lines = [];
           for(var key in obj){
-              lines.push(<option value={key}>{obj[key].nome}</option>);
+              lines.push(<option key={key} value={key}>{obj[key].nome}</option>);
           };
           return <div><select value={this.state.value} onChange={this.handleChange}>
               <option selected disabled>Choose here</option>
