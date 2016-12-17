@@ -1,11 +1,11 @@
 ## Equador
 Manutenção preventiva de Equipamentos
 
-Thiago Luis
-Arthur Guilherme
-Matheus Hoffmann
-João Victor Celes
-Erik Tronkos
+Componentes: Thiago Luis,
+ Arthur Guilherme,
+ Matheus Hoffmann,
+ João Victor Celes e
+ Erik Tronkos.
 
 
 ### Instalando
