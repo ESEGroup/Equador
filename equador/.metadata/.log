@@ -1,0 +1,142 @@
+
+!ENTRY org.python.pydev.shared_core 4 4 2016-12-18 17:47:52.192
+!MESSAGE /home/arthur/Equador/equador/.metadata/.plugins/org.python.pydev/v1_93lbdo62cifm9olokixj47cql/1.v1_sys_astdelta (Arquivo ou diretório não encontrado)
+!STACK 0
+java.io.FileNotFoundException: /home/arthur/Equador/equador/.metadata/.plugins/org.python.pydev/v1_93lbdo62cifm9olokixj47cql/1.v1_sys_astdelta (Arquivo ou diretório não encontrado)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.python.pydev.shared_core.io.FileUtils.writeBytesToFile(FileUtils.java:140)
+	at org.python.pydev.shared_core.io.FileUtils.writeStrToFile(FileUtils.java:133)
+	at org.python.pydev.core.DeltaSaver.addCommand(DeltaSaver.java:263)
+	at org.python.pydev.core.DeltaSaver.addInsertCommand(DeltaSaver.java:297)
+	at org.python.pydev.editor.codecompletion.revisited.ModulesManagerWithBuild.doAddSingleModule(ModulesManagerWithBuild.java:158)
+	at org.python.pydev.editor.codecompletion.revisited.ModulesManager.getModule(ModulesManager.java:971)
+	at org.python.pydev.editor.codecompletion.revisited.ModulesManager.getModule(ModulesManager.java:787)
+	at org.python.pydev.editor.codecompletion.revisited.SystemModulesManager.getModuleWithoutBuiltins(SystemModulesManager.java:381)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getModuleAndRelatedModulesManager(ProjectModulesManager.java:219)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getModule(ProjectModulesManager.java:180)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getModule(ProjectModulesManager.java:164)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getModule(AbstractASTManager.java:479)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.findModuleFromPath(AbstractASTManager.java:2173)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.findOnImportedMods(AbstractASTManager.java:2064)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.findOnImportedMods(AbstractASTManager.java:1941)
+	at com.python.pydev.analysis.visitors.ImportChecker.visitImportToken(ImportChecker.java:186)
+	at com.python.pydev.analysis.visitors.ImportChecker.visitImportToken(ImportChecker.java:167)
+	at com.python.pydev.analysis.scopeanalysis.ScopeAnalyzerVisitor.visitImportFrom(ScopeAnalyzerVisitor.java:130)
+	at org.python.pydev.parser.jython.ast.ImportFrom.accept(ImportFrom.java:96)
+	at org.python.pydev.parser.jython.ast.Module.traverse(Module.java:87)
+	at com.python.pydev.analysis.scopeanalysis.AbstractScopeAnalyzerVisitor.traverse(AbstractScopeAnalyzerVisitor.java:194)
+	at org.python.pydev.parser.jython.ast.VisitorBase.visitModule(VisitorBase.java:10)
+	at org.python.pydev.parser.jython.ast.Module.accept(Module.java:79)
+	at com.python.pydev.refactoring.wizards.rename.AbstractRenameRefactorProcess.getOccurrencesWithScopeAnalyzer(AbstractRenameRefactorProcess.java:281)
+	at com.python.pydev.refactoring.wizards.rename.PyRenameImportProcess.findReferencesToRenameOnLocalScope(PyRenameImportProcess.java:81)
+	at com.python.pydev.refactoring.wizards.rename.AbstractRenameRefactorProcess.findReferencesToRename(AbstractRenameRefactorProcess.java:190)
+	at com.python.pydev.refactoring.wizards.rename.PyRenameImportProcess.findReferencesToRename(PyRenameImportProcess.java:72)
+	at com.python.pydev.refactoring.wizards.rename.PyReferenceSearcher.search(PyReferenceSearcher.java:152)
+	at com.python.pydev.refactoring.markoccurrences.MarkOccurrencesJob.createRequest(MarkOccurrencesJob.java:151)
+	at org.python.pydev.shared_ui.mark_occurrences.BaseMarkOccurrencesJob.run(BaseMarkOccurrencesJob.java:168)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.mylyn.tasks.core 2 0 2016-12-18 17:51:40.513
+!MESSAGE Save failed for Task List
+!STACK 1
+org.eclipse.core.runtime.CoreException: Saving Task List failed
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizer.writeTaskList(TaskListExternalizer.java:74)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant$2.execute(TaskListExternalizationParticipant.java:129)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:728)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:719)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant.save(TaskListExternalizationParticipant.java:133)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.AbstractExternalizationParticipant.execute(AbstractExternalizationParticipant.java:70)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.ExternalizationManager$ExternalizationJob.run(ExternalizationManager.java:222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.FileNotFoundException: /home/arthur/Equador/equador/.metadata/.mylyn/tasks.xml.zip (Arquivo ou diretório não encontrado)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizer.writeTaskList(TaskListExternalizer.java:59)
+	... 7 more
+!SUBENTRY 1 org.eclipse.mylyn.tasks.core 4 0 2016-12-18 17:51:40.513
+!MESSAGE Saving Task List failed
+!STACK 0
+java.io.FileNotFoundException: /home/arthur/Equador/equador/.metadata/.mylyn/tasks.xml.zip (Arquivo ou diretório não encontrado)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizer.writeTaskList(TaskListExternalizer.java:59)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant$2.execute(TaskListExternalizationParticipant.java:129)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:728)
+	at org.eclipse.mylyn.internal.tasks.core.TaskList.run(TaskList.java:719)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.TaskListExternalizationParticipant.save(TaskListExternalizationParticipant.java:133)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.AbstractExternalizationParticipant.execute(AbstractExternalizationParticipant.java:70)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.ExternalizationManager$ExternalizationJob.run(ExternalizationManager.java:222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.ide 4 4 2016-12-18 18:00:28.311
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2016-12-18 18:00:28.312
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2016-12-18 18:00:28.312
+!MESSAGE Could not write workspace metadata '/home/arthur/Equador/equador/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree'.
+!STACK 0
+java.io.FileNotFoundException: /home/arthur/Equador/equador/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree (Arquivo ou diretório não encontrado)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(SafeFileOutputStream.java:51)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1408)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1190)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2283)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$4.run(IDEWorkbenchAdvisor.java:456)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.python.pydev.shared_core 4 4 2016-12-18 18:00:28.504
+!MESSAGE /home/arthur/Equador/equador/.metadata/.plugins/org.eclipse.core.resources/.projects/equador/com.python.pydev.analysis/v2_indexcache/lc
+!STACK 0
+java.nio.file.NoSuchFileException: /home/arthur/Equador/equador/.metadata/.plugins/org.eclipse.core.resources/.projects/equador/com.python.pydev.analysis/v2_indexcache/lc
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)
+	at sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:427)
+	at java.nio.file.Files.newDirectoryStream(Files.java:457)
+	at org.apache.lucene.store.FSDirectory.listAll(FSDirectory.java:176)
+	at org.apache.lucene.store.FSDirectory.listAll(FSDirectory.java:188)
+	at org.apache.lucene.index.IndexFileDeleter.refresh(IndexFileDeleter.java:432)
+	at org.apache.lucene.index.IndexFileDeleter.refresh(IndexFileDeleter.java:471)
+	at org.apache.lucene.index.IndexWriter.rollbackInternal(IndexWriter.java:1983)
+	at org.apache.lucene.index.IndexWriter.shutdown(IndexWriter.java:973)
+	at org.apache.lucene.index.IndexWriter.close(IndexWriter.java:1015)
+	at org.python.pydev.shared_core.index.IndexApi.dispose(IndexApi.java:132)
+	at com.python.pydev.analysis.additionalinfo.ReferenceSearchesLucene.disposeAll(ReferenceSearchesLucene.java:59)
+	at com.python.pydev.analysis.AnalysisPlugin.stop(AnalysisPlugin.java:118)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:823)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:946)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1580)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:270)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:202)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.python.pydev.shared_core 1 1 2016-12-18 18:00:28.514
+!MESSAGE Not saving ast manager for: P/sistema_equador. No write area available.
+
+!ENTRY org.python.pydev.shared_core 1 1 2016-12-18 18:00:28.514
+!MESSAGE Not saving ast manager for: P/sistemadrca. No write area available.
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-12-18 18:00:29.098
+!MESSAGE The workspace will exit with unsaved changes in this session.
