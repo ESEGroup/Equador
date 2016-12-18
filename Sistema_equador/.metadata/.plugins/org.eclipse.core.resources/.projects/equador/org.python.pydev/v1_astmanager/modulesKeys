@@ -1,0 +1,13 @@
+MODULES_MANAGER_V2
+coreequador.__init__|/home/arthur/workspace/equador/coreequador/__init__.py
+coreequador.admin|/home/arthur/workspace/equador/coreequador/admin.py
+coreequador.apps|/home/arthur/workspace/equador/coreequador/apps.py
+coreequador.migrations.__init__|/home/arthur/workspace/equador/coreequador/migrations/__init__.py
+coreequador.models|/home/arthur/workspace/equador/coreequador/models.py
+coreequador.tests|/home/arthur/workspace/equador/coreequador/tests.py
+coreequador.views|/home/arthur/workspace/equador/coreequador/views.py
+equador.__init__|/home/arthur/workspace/equador/equador/__init__.py
+equador.settings|/home/arthur/workspace/equador/equador/settings.py
+equador.urls|/home/arthur/workspace/equador/equador/urls.py
+equador.wsgi|/home/arthur/workspace/equador/equador/wsgi.py
+manage|/home/arthur/workspace/equador/manage.py
