@@ -1,0 +1,34 @@
+{% load static %}	
+<head>
+	<title>Sistema de Manutenção Preventiva</title>
+</head>
+<body>
+	<p style="font-size: 50px">Sistema de Manutenção Preventiva</p>
+	<p> Olá, {{ user.nome }}</p>
+	<table>
+		<tr>
+		<th>Número do Chamado</th>
+		<th>Equipamento</th>
+		<th>Status</th>
+		<th>Data Início</th>
+		<th>Data Fim</th>
+		<th>Fabricante</th>
+		<th>Departamento</th>
+		</tr>
+		{% for man in manutencoes %}
+		<tr>
+			<td>{{ man.pk }}</td>
+			<td>{{ man.equipamento.nome }}</td>
+			<td>{{ man.status.nome }}</td>
+			<td> {{ man.data_inicio|date:"d M, Y" }}</td>
+			<td>
+				{% if man.data_fim %} 
+					{{ man.data_fim }} 
+				{% endif %}
+			</td>
+			<td>{{ man.equipamento.fabricante }}</td>
+			<td>{{ man.equipamento.departamento.nome }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>

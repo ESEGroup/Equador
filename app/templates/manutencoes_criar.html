@@ -1,0 +1,12 @@
+{% load static %}	
+<head>
+	<title>Sistema de Manutenção Preventiva</title>
+</head>
+<body>
+	<p style="font-size: 50px">Sistema de Manutenção Preventiva</p>
+	<form action="/manutencao/criar" method="POST">
+	{% csrf_token %}
+	{{ form }}
+	<button type="submit">Submit</button>
+	</form>
+</body>
