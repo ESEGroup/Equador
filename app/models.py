@@ -8,6 +8,8 @@ from datetime import date
 # Create your models here.
 
 
+
+
 class View_Manutencao():
 
 	def novaManut(Funcionario, Equipamento):
@@ -17,6 +19,7 @@ class View_Manutencao():
 		manut.funcionario = Funcionario
 		manut.equipamento = Equipamento
 		notificar(Funcionario, Equipamento)
+
 
 		return
 
@@ -102,6 +105,22 @@ class Manutencao(models.Model):
 		data_fim = Hoje
 
 		return
+
+
+	def EscolherData(manut, inicio, fim):#A CONFERIR
+		
+		for dia in range(lista_dias_ocupados[0].day, fim.day):
+			if dataocupada[i]>= inicio and dataocupada[i]<= fim:
+				return "data ocupada"
+
+			dia= lista_dias_ocupados[i+1]		
+
+		manut.data_inicio= inicio
+		manut.data_fim= fim
+
+		return
+
+
 
 class ListaManut():
 	listamanutencao = models.ManyToManyField('Manutencao')
