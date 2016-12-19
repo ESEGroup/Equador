@@ -2,7 +2,6 @@
 
 from django.db import models
 
-from enum import Enum 
 from datetime import date 
 
 # Create your models here.
@@ -40,8 +39,8 @@ class Administrador(Usuario):
 		return departamento
 
 class Funcionario(Usuario):
-	pass
-
+	def return_nada()
+		pass
 
 class Manutencao(models.Model):
 
@@ -51,7 +50,7 @@ class Manutencao(models.Model):
 	equipamento = models.ForeignKey('Equipamento')
 	funcionario = models.ForeignKey('Funcionario')
 	
-	def verificar():
+	'''def verificar():
 		if Hoje>=data_inicio and Hoje<=data_fim:
 			equipamento.status= "Em Manutencao"
 		elif hoje < data_fim:
@@ -60,7 +59,7 @@ class Manutencao(models.Model):
 			equipamento.status= "Disponivel"
 
 		return equipamento.status 
-
+'''
 
 	def concluirManutencao():
 		data_fim = Hoje
@@ -71,12 +70,14 @@ class Manutencao(models.Model):
 
 
  	
-	''''nome = models.CharField(max_lenght=30)
+'''	
+	nome = models.CharField(max_lenght=30)
 	cpf = models.IntegerField()
 	profissao = models.ForeignKey(Profissao)
-'''
 
-'''	def mostradados():
+
+	def mostradados():
 		print(nome)
 		print(cpf)
-		print(profissao)'''
+		print(profissao)
+'''
