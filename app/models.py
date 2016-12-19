@@ -7,9 +7,26 @@ from datetime import date
 
 # Create your models here.
 
+
+class View_Manutencao():
+
+	def novaManut(Funcionario, Equipamento):
+		manut = Manutencao()
+
+		
+		manut.funcionario = Funcionario
+		manut.equipamento = Equipamento
+		notificar(Funcionario, Equipamento)
+
+		return
+
+	def notificar (Funcio, Equip): #CONFERIR
+		print ("%s deve realizar manutencao de %s", Funcio, Equip)
+
+		return
+
 class Status(models.Model):
 
-	id = models.AutoField(primary_key = True)
 	nome = models.CharField(max_length=200)
 
 
@@ -18,7 +35,7 @@ class Equipamento(models.Model):
 	nome = models.CharField(max_length=200)
 	fabricante = models.CharField(max_length=200)
 	status = models.ForeignKey('Status', on_delete=models.CASCADE)
-
+	local = models.CharField(max_length=200)
 
 class ListaEquip(models.Model):
 
@@ -33,25 +50,34 @@ class ListaEquip(models.Model):
 
 		return
 
-class Usuario(models.Model):
-	nome = models.CharField(max_lenght=100)
-	cpf = models.IntegerField()
-	profissao = models.CharField(choices=["AdmGeral","AdmDep", "FuncioMan"])
 
-	def selecionarUsu():
+class Usuario(models.Model):
+	nome = models.CharField(max_length=100)
+	cpf = models.IntegerField()
+
+
+
+	profissao = models.CharField(max_length=100, choices=[("0", "AdmGeral"),("1", "AdmDep"), ("2", "FuncioMan")])
+
+
+	def selecionarUsuario():
 		return nome 
 		
 
 class Administrador(Usuario):
-	departamento = models.CharField ()
+	departamento = models.CharField (max_length=200)
 
 
 	def retonaDep():
 		return departamento
 
 class Funcionario(Usuario):
+	pass
 
 	def notificar():
+	
+	
+
 
 class Manutencao(models.Model):
 
@@ -59,14 +85,14 @@ class Manutencao(models.Model):
 	data_inicio = models.DateTimeField()
 	data_fim = models.DateTimeField()
 	equipamento = models.ForeignKey('Equipamento')
-	funcionario = models.ForeignKey('Fucionario')
+	funcionario = models.ForeignKey('Funcionario')
 	
 	def verificar():
 		if Hoje>=data_inicio and Hoje<=data_fim:
 			equipamento.status= "Em Manutencao"
 		elif Hoje < data_fim:
 			equipamento.status= "Manutencao Pendente"
-		else
+		else:
 			equipamento.status= "Disponivel"
 
 		return equipamento.status 
@@ -88,6 +114,14 @@ class ListaManut():
 
 		return
 
+	def exibirManFunc(nome):
+		ans = []
+		for i in range (0,quantidadeManut):
+			if listamanutencao[i].funcionario.nome==nome:
+				ans.append(listamanutencao[i])
+		return ans
+
+
 	
 
 
@@ -101,8 +135,3 @@ class ListaManut():
 		print(nome)
 		print(cpf)
 		print(profissao)'''
-
-
-
-	
-
