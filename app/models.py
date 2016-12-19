@@ -3,17 +3,33 @@
 from django.db import models
 
 from enum import Enum 
+from datetime import date 
 
 # Create your models here.
 
-	
+class Status(models.Model):
+
+	id = models.AutoField(primary_key = True)
+	nome = models.CharField(max_length=200)
+
+
+class Equipamento(models.Model):
+
+	nome = models.CharField(max_length=200)
+	fabricante = models.CharField(max_length=200)
+	status = models.ForeignKey('Status', on_delete=models.CASCADE)
+
+
+class Listas(Equipamento):
+
+	listaequipamentos = models.ManyToManyField()
 
 class Usuario(models.Model):
 	nome = models.CharField(max_lenght=100)
 	cpf = models.IntegerField()
 	profissao = models.ForeignKey(choices=["AdmGeral","AdmDep", "FuncioMan"])
 
-	def selecionar():
+	def selecionarUsu():
 		return nome 
 		
 
@@ -21,15 +37,40 @@ class Administrador(Usuario):
 	departamento = models.CharField ()
 
 
-	def 
+	def retonaDep():
+		return departamento
 
 class Funcionario(Usuario):
 
-class RequisicaoManut():
-	codigoDeManutencao = models.CharField(max_lenght=10)
+
+class Manutencao(models.Model):
+
+	Hoje = date.today()
+	data_inicio = models.DateTimeField()
+	data_fim = models.DateTimeField()
+	equipamento = models.ForeignKey('Equipamento')
+	funcionario = models.ForeignKey('Fucionario')
+	
+	def verificar():
+		if Hoje>=data_inicio and Hoje<=data_fim:
+			equipamento.status= "Em Manutencao"
+		elif hoje < data_fim:
+			equipamento.status= "Manutencao Pendente"
+		else
+			equipamento.status= "Disponivel"
+
+		return equipamento.status 
+
+
+	def concluirManutencao():
+		data_fim = Hoje
 
 
 
+	
+
+
+ 	
 	''''nome = models.CharField(max_lenght=30)
 	cpf = models.IntegerField()
 	profissao = models.ForeignKey(Profissao)
@@ -38,5 +79,9 @@ class RequisicaoManut():
 '''	def mostradados():
 		print(nome)
 		print(cpf)
-		print(profissao)
+		print(profissao)'''
+
+
+
+	
 
