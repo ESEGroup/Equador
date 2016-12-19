@@ -7,7 +7,6 @@ from django.db import models
 
 class Status(models.Model):
 
-	id = models.AutoField(primary_key = True)
 	nome = models.CharField(max_length=200)
 
 
@@ -22,5 +21,4 @@ class Manutencao(models.Model):
 	data_inicio = models.DateTimeField()
 	data_fim = models.DateTimeField()
 	equipamento = models.ForeignKey('Equipamento')
-	funcionario = models.ForeignKey('Fucionario')
-	
+	funcionario = models.ForeignKey('Funcionario')
