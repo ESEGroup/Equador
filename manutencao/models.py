@@ -10,6 +10,9 @@ class Funcionario(models.Model):
 	def __str__(self):
 		return self.nome
 
+	class Meta:
+		verbose_name_plural = "funcionarios"
+
 class Manutencao(models.Model):
 	inicio = models.DateTimeField()
 	fim = models.DateTimeField()
@@ -19,4 +22,7 @@ class Manutencao(models.Model):
 	def __str__(self):
 		ans = self.funcionario.nome + " - " + self.equipamento.tipo.nome
 		return ans
+
+	class Meta:
+		verbose_name_plural = "manutencoes"
 

@@ -8,11 +8,17 @@ class TipoEquipamento(models.Model):
 	def __str__(self):
 		return str(self.id) + " - " + self.nome
 
+	class Meta:
+		verbose_name_plural = "tiposEquipamento"
+
 class Status(models.Model):
 	nome = models.CharField(max_length=200)
 
 	def __str__(self):
 		return self.nome
+
+	class Meta:
+		verbose_name_plural = "status"
 
 class Equipamento(models.Model):
 	tipo = models.ForeignKey(TipoEquipamento,
@@ -26,6 +32,9 @@ class Equipamento(models.Model):
 
 	def __str__(self):
 		return str(self.id) + " - " + self.tipo.nome
+
+	class Meta:
+		verbose_name_plural = "equipamentos"
 
 	def datas_ocupadas(self):
 		ans = []
