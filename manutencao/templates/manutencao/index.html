@@ -1,0 +1,10 @@
+
+{% if all_manut %}
+	<ul>
+		{% for manut in all_manut %}
+		<li> <a href="/manutencao/{{manut.id}}/">{{manut.id}} - {{manut.funcionario.nome}}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h3> Não há manutenções para serem exibidas </h3>
+{% endif %}

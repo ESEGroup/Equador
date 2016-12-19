@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Detalhes</title>
+</head>
+<body>
+
+	{% for manut in manutencoes %}
+	<h2> {{ manut.id }} - {{manut.equipamento}} </h2>
+	{% endfor %}
+</body>
+</html>
