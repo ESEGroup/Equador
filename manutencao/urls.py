@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
 
     # /manutencao/<Funcionario_id>
-    url(r'^(?P<func_id>[0-9]+)/$', views.detail, name='detail')
+    url(r'^(?P<manut_func>[0-9]+)/$', views.detail, name='detail')
 ]
