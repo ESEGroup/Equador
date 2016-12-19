@@ -2,7 +2,7 @@
 
 from django.db import models
 
-from enum import Enum 
+#from enum import Enum 
 from datetime import date 
 
 # Create your models here.
@@ -20,14 +20,23 @@ class Equipamento(models.Model):
 	status = models.ForeignKey('Status', on_delete=models.CASCADE)
 
 
-class Listas(Equipamento):
+class ListaEquip(models.Model):
 
-	listaequipamentos = models.ManyToManyField()
+	listaequipamentos = models.ManyToManyField('Equipamento')
+
+	quantidadeEquip = lenght(listaequipamentos)
+
+	def exibir():
+
+		for i in range (0,quantidadeEquip):
+			print listaequipamentos[i]
+
+		return
 
 class Usuario(models.Model):
 	nome = models.CharField(max_lenght=100)
 	cpf = models.IntegerField()
-	profissao = models.ForeignKey(choices=["AdmGeral","AdmDep", "FuncioMan"])
+	profissao = models.CharField(choices=["AdmGeral","AdmDep", "FuncioMan"])
 
 	def selecionarUsu():
 		return nome 
@@ -42,6 +51,7 @@ class Administrador(Usuario):
 
 class Funcionario(Usuario):
 
+	def notificar():
 
 class Manutencao(models.Model):
 
@@ -54,7 +64,7 @@ class Manutencao(models.Model):
 	def verificar():
 		if Hoje>=data_inicio and Hoje<=data_fim:
 			equipamento.status= "Em Manutencao"
-		elif hoje < data_fim:
+		elif Hoje < data_fim:
 			equipamento.status= "Manutencao Pendente"
 		else
 			equipamento.status= "Disponivel"
@@ -65,7 +75,18 @@ class Manutencao(models.Model):
 	def concluirManutencao():
 		data_fim = Hoje
 
+		return
 
+class ListaManut():
+	listamanutencao = models.ManyToManyField('Manutencao')
+	quantidadeManut = lenght(listamanutencao)
+	
+	def exibir():
+
+		for i in range (0,quantidadeManut):
+			print listamanutencao[i]
+
+		return
 
 	
 
