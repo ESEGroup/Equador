@@ -19,27 +19,28 @@ class Equipamento(models.Model):
 	status = models.ForeignKey('Status', on_delete=models.CASCADE)
 
 
-class Listas(Equipamento):
+class Listas(models.Model):
 
-	listaequipamentos = models.ManyToManyField()
+	lista_equipamentos = models.ManyToManyField('Equipamento')
 
 class Usuario(models.Model):
-	nome = models.CharField(max_lenght=100)
+	nome = models.CharField(max_length=100)
 	cpf = models.IntegerField()
-	profissao = models.ForeignKey(choices=["AdmGeral","AdmDep", "FuncioMan"])
+	profissao = models.CharField(max_length=100, choices=[("0", "AdmGeral"),("1", "AdmDep"), ("2", "FuncioMan")])
 
-	def selecionarUsu():
+	def selecionarUsuario():
 		return nome 
 		
 
 class Administrador(Usuario):
-	departamento = models.CharField ()
+	departamento = models.CharField (max_length=200)
 
 
 	def retonaDep():
 		return departamento
 
 class Funcionario(Usuario):
+	pass
 
 
 class Manutencao(models.Model):
@@ -55,7 +56,7 @@ class Manutencao(models.Model):
 			equipamento.status= "Em Manutencao"
 		elif hoje < data_fim:
 			equipamento.status= "Manutencao Pendente"
-		else
+		else:
 			equipamento.status= "Disponivel"
 
 		return equipamento.status 
@@ -79,9 +80,3 @@ class Manutencao(models.Model):
 		print(nome)
 		print(cpf)
 		print(profissao)'''
-
-
-
-	
-
->>>>>>> 07b9db94da716da570215600257b736f406df6e3

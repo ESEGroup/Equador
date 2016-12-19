@@ -1,0 +1,37 @@
+[
+	{
+	"model": "app.Administrador",
+	"pk": 1,
+	"fields":
+		{
+		"nome": "GHT"
+		}
+	},
+
+	{
+	"model": "app.Administrador",
+	"pk": 2,
+	"fields":
+		{
+		"nome": "Hilmer"
+		}	
+	},
+
+	{
+	"model": "app.Administrador",
+	"pk": 3,
+	"fields":
+		{
+		"nome": "Fabio"
+		}	
+	},
+
+	{
+	"model": "app.Administrador",
+	"pk": 4,
+	"fields":
+		{
+		"nome": "Talita"
+		}	
+	}
+]
