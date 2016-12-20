@@ -36,6 +36,7 @@
 		<th>Data Fim</th>
 		<th>Fabricante</th>
 		<th>Departamento</th>
+		<th>Responsável</th>
 		</tr>
 		{% for man in manutencoes %}
 		<tr>
@@ -50,6 +51,7 @@
 			</td>
 			<td>{{ man.equipamento.fabricante }}</td>
 			<td>{{ man.equipamento.departamento.nome }}</td>
+			<td>{{ man.responsavel.nome }}</td>
 		</tr>
 		{% endfor %}
 	</table>

@@ -1,25 +1,22 @@
 ## Equador
 Manutenção preventiva de Equipamentos
 
-Componentes: Thiago Luis,
- Arthur Guilherme,
- Matheus Hoffmann,
- João Victor Celes e
- Erik Tronkos.
+Componentes: 
+ Arthur Guilherme
+ Erik Tronkos
+ João Victor Celes
+ Matheus Hoffmann
+ Thiago Luis
 
 
 ### Instalando
-Para conseguir rodar devidamente o servidor, deverá instalar o software npm. Pode ser instalado junto ao node:
-https://nodejs.org/en/
-Site oficial: https://www.npmjs.com/
+É necessário Python3 e a instalação do modulo django (pip install django) e bootstrap (pip install django-bootstrap3)
 
 Também será necessário clonar o repositório através do comando:
 ```bash
 git clone https://github.com/ESEGroup/Equador.git
 cd Equador
-cd src
-npm install
-npm run build
-node src/server.js
+python manage.py runserver
+
 ```
-Acesse http://localhost:3000
+Acesse http://localhost:8000
