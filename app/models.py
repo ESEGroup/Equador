@@ -9,8 +9,14 @@ from django.contrib.auth.models import AbstractUser
 class Departamento(models.Model):
 	nome = models.CharField(max_length=200)	
 
+	def __str__(self):
+		return self.nome
+
 class StatusEquipamento(models.Model):
 	nome = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.nome
 
 
 class Equipamento(models.Model):
@@ -50,3 +56,6 @@ class Manutencao(models.Model):
 
 class StatusManutencao(models.Model):
 	nome = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.nome

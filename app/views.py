@@ -41,6 +41,8 @@ def home(request):
 @login_required(login_url='')
 def manutencao(request):
 	manutencoes = Manutencao.objects.filter(equipamento__departamento=request.user.departamento)
+	if request.user.profissao == 'Funcionario':
+		manutencoes.filter(responsavel=request.user)
 	context = {'manutencoes': manutencoes}
 	return render(request,'manutencoes.html', context)
 
