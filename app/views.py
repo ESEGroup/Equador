@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as authlogin, logout as authlogout
 from django.http import HttpResponse
 from app.models import *
-from app.forms import ManutencaoForm
+from app.forms import *
 import datetime
 # Create your views here.
 
@@ -64,3 +64,42 @@ def manutencaoCriar(request):
 	form = ManutencaoForm()
 	context = {'form' : form}
 	return render(request,'manutencoes_criar.html', context)
+
+@permission_required('app.can_add_equipamento', login_url='')
+def equipamentoCriar(request):
+	if request.method == 'POST':
+		form = EquipamentoForm(request.POST)
+		if form.is_valid():
+			nome = form.cleaned_data['nome']
+			fabricante = form.cleaned_data['fabricante']
+			status = form.cleaned_data['status']
+			departamento = form.cleaned_data['departamento']
+
+			Equipamento.objects.create(nome=nome, fabricante=fabricante, status=status, departamento=departamento)
+
+			return redirect('home')
+    
+	form = EquipamentoForm()
+	context = {'form' : form}
+	return render(request,'equipamento_criar.html', context)
+
+@permission_required('app.can_add_usuario', login_url='')
+def usuarioCriar(request):
+	if request.method == 'POST':
+		form = UsuarioForm(request.POST)
+		if form.is_valid():
+			username = form.cleaned_data['username']
+			senha = form.cleaned_data['senha']
+			nome = form.cleaned_data['nome']
+			email = form.cleaned_data['email']
+			cpf = form.cleaned_data['cpf']
+			profissao = form.cleaned_data['profissao']
+			departamento = form.cleaned_data['departamento']
+
+			Usuario.objects.create_user(username=username, password=senha, nome=nome,email=email,cpf=cpf,profissao=profissao, departamento=departamento)
+
+			return redirect('home')
+    
+	form = UsuarioForm()
+	context = {'form' : form}
+	return render(request,'usuario_criar.html', context)

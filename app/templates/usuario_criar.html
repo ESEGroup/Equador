@@ -1,5 +1,6 @@
 {% load static %}	
 
+{% load bootstrap3 %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,40 +14,30 @@
 	<title>Sistema de Manutenção Preventiva</title>
 </head>
 <body>
-<div class='container'>
 
+<div class='container'>
+	
 	<ul class="nav nav-tabs">
-	  <li role="presentation" class="active"><a href="/home">Home</a></li>
+	  <li role="presentation"><a href="/home">Home</a></li>
 	  <li role="presentation"><a href="/manutencao">Listar Manutenções</a></li>
 	  <li role="presentation"><a href="/manutencao/criar">Criar Manutenção</a></li>
 	  <li role="presentation"><a href="/equipamento/criar">Inserir Equipamento</a></li>
-	  <li role="presentation"><a href="/usuario/criar">Criar Usuário</a></li>
+	  <li role="presentation" class="active"><a href="/usuario/criar">Criar Usuário</a></li>
 	  <li role="presentation"><a href="/logout">Logout</a></li>
 	</ul>
 
 	<h1>Sistema de Manutenção Preventiva</h1>
 	<br>
-	<h4> Olá, {{ user.nome }}</h4>
-	<br>
 	<div class='panel panel-default'>
-	<div class='panel-heading'> Lista de Equipamentos</div>
-	<table class='table'>
-		<tr>
-		<th>Equipamento</th>
-		<th>Fabricante</th>
-		<th>Status</th>
-		<th>Departamento</th>
-		</tr>
-		{% for eqp in equipamentos %}
-		<tr>
-			<td>{{ eqp.nome }}</td>
-			<td>{{ eqp.fabricante }}</td>
-			<td>{{ eqp.status.nome}} </td>
-			<td>{{ eqp.departamento.nome }}</td>
-		</tr>
-		{% endfor %}
-	</table>
+	<div class='panel-heading'>Criar Usuário</div>
+	<div class='panel-body'>
+	<form action="/usuario/criar/" method="POST" class='form'>
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	<button type="submit" class='btn btn-primary'>Submit</button>
+	</form>
 	</div>
-</div>
-</body>
+	</div>
 
+	</div>
+</body>
